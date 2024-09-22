@@ -1,5 +1,6 @@
 import sys
-import pyfiglet
+from random import choice
+from pyfiglet import Figlet
 
 if len(sys.argv) == 3:
     if sys.argv[1] != '-f' or sys.argv[1] != '--font':
@@ -25,7 +26,12 @@ def get_text():
     except EOFError:
         sys.exit("Should enter a text")
 
-
+def fliglet_text(text: str): 
+    f = Figlet()
+    if FONT == None:
+        FONT = choice(f.getFonts())
+    f.font = FONT
+    return f.renderText(text)
 
 if __name__ == '__main__':
     main()
