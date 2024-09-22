@@ -1,6 +1,6 @@
 import sys
 from random import choice
-from pyfiglet import Figlet
+from pyfiglet import Figlet, FigletString
 
 if len(sys.argv) == 3:
     if sys.argv[1] != '-f' or sys.argv[1] != '--font':
@@ -32,6 +32,9 @@ def fliglet_text(text: str):
         FONT = choice(f.getFonts())
     f.font = FONT
     return f.renderText(text)
+
+def print_text(text : FigletString):
+    print(f'Output: \n {text}')
 
 if __name__ == '__main__':
     main()
