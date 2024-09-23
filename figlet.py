@@ -12,14 +12,29 @@ else:
     FONT = True
 
 def main(font = FONT):
+    # creat f object
+    f = Figlet()
+
+    # check font and chooice font
+    f = choice_font(f, font)
+
     # Get imput text
     text = get_text()
 
     # Get text to print
-    text = fliglet_text(text, font)
+    text = fliglet_text(text, f)
 
     # print text
     print_text(text)
+
+def choice_font(f : Figlet, font : str):
+    all_fonts = f.getFonts()
+    if font == True:
+        font = choice(all_fonts)
+    elif font not in all_fonts:
+        sys.exit("Invalid usage")
+    f.font = font
+    return f
 
 def get_text():
     try: 
@@ -29,15 +44,7 @@ def get_text():
     except KeyboardInterrupt:
         sys.exit("Should enter a text")
 
-def fliglet_text(text: str, font): 
-    f = Figlet()
-    all_fonts = f.getFonts()
-    if font == True:
-        font = choice(all_fonts)
-    elif font not in all_fonts:
-        sys.exit("Invalid usage")
-    f.font = font      
-
+def fliglet_text(text: str, f: Figlet): 
     return f.renderText(text)
 
 def print_text(text : FigletString):
