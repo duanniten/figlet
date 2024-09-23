@@ -33,7 +33,7 @@ def choice_font(f : Figlet, font : str):
         font = choice(all_fonts)
     elif font not in all_fonts:
         sys.exit("Invalid usage")
-    f.font = font
+    f = Figlet(font = font)
     return f
 
 def get_text():
