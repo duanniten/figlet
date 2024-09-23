@@ -37,7 +37,7 @@ def fliglet_text(text: str, font):
     return f.renderText(text)
 
 def print_text(text : FigletString):
-    print(f'Output: \n {text}')
+    print(f'Output: {text}')
 
 if __name__ == '__main__':
     main()
