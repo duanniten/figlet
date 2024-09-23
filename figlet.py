@@ -23,7 +23,7 @@ def main(font = FONT):
 
 def get_text():
     try: 
-        return input("Input: ")
+        return input()
     except EOFError:
         sys.exit("Should enter a text")
     except KeyboardInterrupt:
@@ -31,13 +31,13 @@ def get_text():
 
 def fliglet_text(text: str, font): 
     f = Figlet()
+    all_fonts = f.getFonts()
     if font == True:
-        font = choice(f.getFonts())
-    try:     
-        f.font = font
-    except NameError:
-        sys.exit("Invalid usage")    
-        
+        font = choice(all_fonts)
+    elif font not in all_fonts:
+        sys.exit("Invalid usage")
+    f.font = font      
+
     return f.renderText(text)
 
 def print_text(text : FigletString):
