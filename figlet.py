@@ -31,13 +31,17 @@ def get_text():
 
 def fliglet_text(text: str, font): 
     f = Figlet()
-    if font:
+    if font == True:
         font = choice(f.getFonts())
-    f.font = font
+    try:     
+        f.font = font
+    except NameError:
+        sys.exit("Invalid usage")    
+        
     return f.renderText(text)
 
 def print_text(text : FigletString):
-    print(f'Output: {text}')
+    print(f'{text}')
 
 if __name__ == '__main__':
     main()
